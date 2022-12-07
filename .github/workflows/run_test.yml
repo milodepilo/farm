@@ -34,6 +34,6 @@ jobs:
             echo ${{secrets.PASSWORD }} | sudo -S pip install farmblog-1.0.0-py3-none-any.whl
             echo ${{secrets.PASSWORD }} | sudo -S flask --app farmblog init-db
             echo ${{secrets.PASSWORD }} | sudo -S mkdir -p ~/farmblog/venv/var/farmblog-instance/
-            echo ${{secrets.PASSWORD }} | ~/farmblog/venv/var/farmblog-instance/config.py
+            echo ${{secrets.PASSWORD }} | sudo s touch ~/farmblog/venv/var/farmblog-instance/config.py
             echo ${{secrets.DEV_SECRET_KEY}} | ~/farmblog/venv/var/farmblog-instance/config.py
             echo ${{secrets.PASSWORD }} | sudo -S systemctl restart farm
