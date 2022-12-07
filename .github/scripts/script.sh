@@ -1,5 +1,4 @@
 
 source ~/home/farmblog/venv/bin/activate
-pip install farmblog-1.0.0-py3-none-any.whl
-export FLASK_APP=farmblog
-flask init-db
+pip install --force-reinstall farmblog-1.0.0-py3-none-any.whl
+flask --app farmblog init-db
