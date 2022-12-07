@@ -26,7 +26,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}          
           script: |
-            sudo mkdir farmblog               
+            echo ${{secrets.PASSWORD }} | sudo -S mkdir farmblog               
             cd farmblog
             git switch blog       
             git pull git@github.com:milodepilo/farm.git blog
