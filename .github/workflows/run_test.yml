@@ -32,5 +32,5 @@ jobs:
             python3 -v venv venv
             source venv/bin/activate
             pip install dist/farmblog-1.0.0-py3-none-any.whl
-            echo SECRET_KEY = '${{SECRET_KEY}} | venv/var/farmblog-instance/config.py
+            echo SECRET_KEY = ${{SECRET_KEY}} | venv/var/farmblog-instance/config.py
             echo ${{secrets.PASSWORD }} | sudo -S systemctl restart farm
