@@ -1,4 +1,0 @@
-include farmblog/schema.sql
-graft farmblog/static
-graft farmblog/templates
-global-exclude *.pyc
