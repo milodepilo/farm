@@ -30,7 +30,7 @@ jobs:
             echo ${{secrets.PASSWORD }} | sudo -S git switch blog       
             echo ${{secrets.PASSWORD }} | sudo -S git pull git@github.com:milodepilo/farm.git blog
             echo ${{secrets.PASSWORD }} | sudo -S python3 -m venv venv
-            source venv/bin/activate
+            . venv/bin/activate
             echo ${{secrets.PASSWORD }} | sudo -S pip install farmblog-1.0.0-py3-none-any.whl
             echo ${{secrets.PASSWORD }} | sudo -S flask --app farmblog init-db
             echo ${{secrets.PASSWORD }} | sudo -S mkdir -p ~/farmblog/venv/var/farmblog-instance/
