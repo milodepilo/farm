@@ -1,9 +1,9 @@
-name: Run tests
+name: Run tests and deploy
 
 # Run this workflow whenever something new is pushed.
 on: 
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   run-tests:
@@ -12,8 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Python
-        uses: actions/setup-python@v2
-        # Specify some input for this particular action
+        uses: actions/setup-python@v3        
         with:
           python-version: '3.10.8'
       - name: Install Dependencies
@@ -28,7 +27,10 @@ jobs:
           key: ${{ secrets.SSH_KEY }}          
           script: |    
             cd farm
-            git switch master        
-            git pull git@github.com:milodepilo/farm.git master
+            git switch main        
+            git pull git@github.com:milodepilo/farm.git main
+            python3 -v venv venv
+            source venv/bin/activate
+            pip install dist/farmblog-1.0.0-py3-none-any.whl
+            echo "SECRET_KEY = '${{SECRET_KEY}}" | venv/var/farmblog-instance/config.py
             echo ${{secrets.PASSWORD }} | sudo -S systemctl restart farm
-            
