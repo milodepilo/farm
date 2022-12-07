@@ -28,6 +28,6 @@ jobs:
           script: |
             cd farmblog                 
             echo ${{secrets.PASSWORD }} | sudo -S git pull git@github.com:milodepilo/farm.git blog                  
-      - name: Run build script
-        run: ./.github/scripts/script.sh
-        shell: bash
+        - name: Run build script
+          run: ./.github/scripts/script.sh
+          shell: bash
