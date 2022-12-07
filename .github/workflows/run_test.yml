@@ -25,12 +25,13 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}          
-          script: |    
-            cd farm
-            git switch main        
-            git pull git@github.com:milodepilo/farm.git main
-            python3 -v venv venv
+          script: |
+            sudo mkdir farmblog               
+            cd farmblog
+            git switch blog       
+            git pull git@github.com:milodepilo/farm.git blog
+            python3 -m venv venv
             source venv/bin/activate
-            pip install dist/farmblog-1.0.0-py3-none-any.whl
+            pip install farmblog-1.0.0-py3-none-any.whl
             echo ${{secrets.DEV_SECRET_KEY}} | venv/var/farmblog-instance/config.py
             echo ${{secrets.PASSWORD }} | sudo -S systemctl restart farm
