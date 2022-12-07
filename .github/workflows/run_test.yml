@@ -26,5 +26,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}          
           script: |                      
-            source script.sh
+            source sctip.sh
             
