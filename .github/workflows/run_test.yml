@@ -26,10 +26,5 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}          
           script: |                      
-            cd farmblog
-            sudo git switch blog       
-            sudo git pull git@github.com:milodepilo/farm.git blog
-            sudo python3 -m venv venv
-            source venv/bin/activate
-            
+            source script.sh
             
