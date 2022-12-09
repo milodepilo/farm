@@ -19,8 +19,6 @@ jobs:
         run: pip install -r requirements.txt
       - name: Setting up flask app
         run: set FLASK_APP=farmblog
-      - name: run flask app
-        run: flask --app farmblog run
       - name: Run tests
         run: pytest
       - name: executing remote ssh commands using ssh key
