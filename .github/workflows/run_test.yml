@@ -29,6 +29,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}          
           script: |    
             cd farmblog
-            echo ${{ secrest.PASSWORD}} | sudo -S git pull farmblog
-
+            echo ${{ secrest.PASSWORD}} | sudo -S git pull farmblog master
+            echo ${{ secrest.PASSWORD}} | sudo -S systemctl restart farmblog
 
