@@ -1,9 +1,13 @@
-name: Run tests and deploy
+name: Run tests
 
 # Run this workflow whenever something new is pushed.
 on: 
   push:
+<<<<<<< HEAD:.github/workflows/run_test.yml
     branches: [ blog ]
+=======
+    branches: [ master ]
+>>>>>>> e57afb6612e0c6417ac15ddbb97c2a5f439009b3:.github/workflows/run_tests.yml
 
 jobs:
   run-tests:
@@ -12,7 +16,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Python
-        uses: actions/setup-python@v3        
+        uses: actions/setup-python@v2
+        # Specify some input for this particular action
         with:
           python-version: '3.10.8'
       - name: Install Dependencies
@@ -26,9 +31,19 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
+<<<<<<< HEAD:.github/workflows/run_test.yml
           key: ${{ secrets.SSH_KEY }}  
           script: |
             cd farmblog                 
             echo ${{secrets.PASSWORD}} | sudo -S git pull git@github.com:milodepilo/farm.git blog
             echo ${{secrets.PASSWORD}} | sudo -S systemctl restart farmblog
          
+=======
+          key: ${{ secrets.SSH_KEY }}          
+          script: |    
+            cd farm
+            git switch master        
+            git pull git@github.com:milodepilo/farm.git master
+            echo ${{secrets.PASSWORD }} | sudo -S systemctl restart farm
+            
+>>>>>>> e57afb6612e0c6417ac15ddbb97c2a5f439009b3:.github/workflows/run_tests.yml
