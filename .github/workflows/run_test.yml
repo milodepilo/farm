@@ -17,8 +17,6 @@ jobs:
           python-version: '3.10.8'
       - name: Install Dependencies
         run: pip install -r requirements.txt
-      - name: Setting up flask app
-        run: set FLASK_APP=farmblog
       - name: Run tests
         run: pytest
       - name: executing remote ssh commands using ssh key
