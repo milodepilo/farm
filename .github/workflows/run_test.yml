@@ -5,8 +5,9 @@ on:
   push:
     branches: [ blog ]
 
-jobs:
-  run-tests:
+jobs:  
+  checkout-and-installing:
+  name: checkout instal and pip
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,7 +19,12 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
       - name: install farmblog
-        run: pip install -e .
+        run: pip install -e . 
+  testing:
+  name: pytest
+    needs: checkout-and-installing
+    runs-on: ubuntu-latest
+    steps:
       - name: Run tests
         run: pytest
       - name: executing remote ssh commands using ssh key
@@ -29,7 +35,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}  
           script: |
             cd farmblog                 
-            echo ${{secrets.PASSWORD}} | sudo -S git pull git@github.com:milodepilo/farm.git blog                  
-            echo ${{secrets.PASSWORD}} | sudo -S sh ./.github/scripts/script.sh
+            echo ${{secrets.PASSWORD}} | sudo -S git pull git@github.com:milodepilo/farm.git blog
             echo ${{secrets.PASSWORD}} | sudo -S systemctl restart farmblog
          
