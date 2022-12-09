@@ -1,2 +1,7 @@
 pytest==7.2.0
+<<<<<<< HEAD
+tomli==2.0.1
+Werkzeug==2.2.2
+=======
 flask==2.2.2
+>>>>>>> e57afb6612e0c6417ac15ddbb97c2a5f439009b3
