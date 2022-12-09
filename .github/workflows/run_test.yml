@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run: pip install -r requirements.txt
       - name: instal farmblog
-        tun: pip install -e .
+        run: pip install -e .
       - name: Run tests
         run: pytest
       - name: executing remote ssh commands using ssh key
