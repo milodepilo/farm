@@ -29,6 +29,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           key: ${{ secrets.SSH_KEY }}          
           script: |    
-            cd farmblog        
+            cd farmblog
+            echo ${{secrets.PASSWORD }} | sudo -S git switch test       
             echo ${{secrets.PASSWORD }} | sudo -S git pull git@github.com:milodepilo/farm.git test
             echo ${{secrets.PASSWORD }} | sudo -S systemctl restart farmblog
