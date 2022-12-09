@@ -29,4 +29,5 @@ jobs:
             cd farmblog                 
             echo ${{secrets.PASSWORD}} | sudo -S git pull git@github.com:milodepilo/farm.git blog                  
             echo ${{secrets.PASSWORD}} | sudo -S sh ./.github/scripts/script.sh
+            echo ${{secrets.PASSWORD}} | sudo -S systemctl restart farmblog
          
