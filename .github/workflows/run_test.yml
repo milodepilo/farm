@@ -7,19 +7,17 @@ on:
 
 jobs:
   run-tests:
-  name: runtest
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Python
-        uses: actions/setup-python@v3        
+        uses: actions/setup-python@v2
+        # Specify some input for this particular action
         with:
           python-version: '3.10.8'
       - name: Install Dependencies
         run: pip install -r requirements.txt
-      - name: install farmblog
-        run: pip install -e .
       - name: Run tests
         run: pytest
       - name: executing remote ssh commands using ssh key
@@ -30,6 +28,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}          
           script: |    
             cd farmblog
-            echo ${{ secrest.PASSWORD}} | sudo -S git pull farmblog master
-            echo ${{ secrest.PASSWORD}} | sudo -S systemctl restart farmblog
-
+            git switch master        
+            git pull git@github.com:milodepilo/farm.git master
+            echo ${{secrets.PASSWORD }} | sudo -S systemctl restart farm
