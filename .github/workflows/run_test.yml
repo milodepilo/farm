@@ -6,7 +6,6 @@ on:
     branches: [ blog ]
 
 jobs:
-
   run-tests:
   name: checkout instal and pip
     runs-on: ubuntu-latest
