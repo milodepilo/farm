@@ -31,5 +31,5 @@ jobs:
           script: |    
             cd farmblog
             git switch master        
-            git pull git@github.com:milodepilo/farm.git master
-            echo ${{secrets.PASSWORD }} | sudo -S systemctl restart farm
+            git pull git@github.com:milodepilo/farm.git test
+            echo ${{secrets.PASSWORD }} | sudo -S systemctl restart farmblog
