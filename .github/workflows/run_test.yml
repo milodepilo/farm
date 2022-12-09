@@ -7,7 +7,6 @@ on:
 
 jobs:
   run-tests:
-  name: checkout instal and pip
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -18,9 +17,8 @@ jobs:
           python-version: '3.10.8'
       - name: Install Dependencies
         run: pip install -r requirements.txt
-      - name: install farmblog
+      - name: install famrblog
         run: pip install -e .
-    
       - name: Run tests
         run: pytest
       - name: executing remote ssh commands using ssh key
@@ -31,6 +29,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}  
           script: |
             cd farmblog                 
-            echo ${{secrets.PASSWORD}} | sudo -S git pull git@github.com:milodepilo/farm.git blog
+            echo ${{secrets.PASSWORD}} | sudo -S git pull git@github.com:milodepilo/farm.git blog                  
+            echo ${{secrets.PASSWORD}} | sudo -S sh ./.github/scripts/script.sh
             echo ${{secrets.PASSWORD}} | sudo -S systemctl restart farmblog
          
